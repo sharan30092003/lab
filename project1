@@ -4,7 +4,7 @@ EX-1....
 nano test.sh
 ✅ Step-2 Type Program
 #!/bin/bash
-echo "Welcome to Linux Shell Scripting"
+echo "Welcome to Fedora Shell Scripting"
 echo "Current Date:"
 date
 echo "Current Directory:"
@@ -20,26 +20,26 @@ chmod +x test.sh
 ./test.sh
 
 EX-5....
-PROGRAM: 
-AWS CLI Installation & Configuration 
-sudo dnf update -y 
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
-sudo dnf install unzip -y 
-unzip awscliv2.zip 
-sudo ./aws/install 
-aws --version 
-aws configure 
-aws s3 ls 
-Terraform Installation 
-unzip terraform_1.6.0_linux_amd64.zip 
-sudo mv terraform /usr/local/bin/ 
-terraform version 
-Create Terraform Project 
-cd ~ 
-mkdir terraform-project 
-cd terraform-project 
-nano main.tf 
-Terraform Configuration Code (main.tf) 
+PROGRAM:
+AWS CLI Installation & Configuration
+sudo dnf update -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo dnf install unzip -y
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+aws configure
+aws s3 ls
+Terraform Installation
+unzip terraform_1.6.0_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+terraform version
+Create Terraform Project
+cd ~
+mkdir terraform-project
+cd terraform-project
+nano main.tf
+Terraform Configuration Code (main.tf)
 
 resource "aws_vpc" "demo_vpc" {
   cidr_block = "10.0.0.0/16"
@@ -48,43 +48,43 @@ resource "aws_vpc" "demo_vpc" {
     Name = "demo-vpc"
   }
 }
-crtl+o enter , crtl+x 
-Terraform Execution Commands 
-terraform init 
-terraform plan 
-terraform apply 
-terraform show
-used to dlt the all  -  terraform destroy
 
+crtl+o enter , crtl+x
+Terraform Execution Commands
+terraform init
+terraform plan
+terraform apply
+terraform show
+used to dlt the all - terraform destroy
 
 EX-6.....
+sudo dnf update -y
+sudo dnf install ansible -y
+ansible --version
+sudo nano /etc/ansible/hosts
 
-sudo dnf update -y 
-sudo dnf install ansible -y 
-ansible --version 
-sudo nano /etc/ansible/hosts 
-[local] 
-localhost ansible_connection=local 
-ansible all -m ping 
-OUTPUT SCREEN: 
-SUCCESS => { 
-"ping": "pong" 
+[local]
+localhost ansible_connection=local
+
+ansible all -m ping
+OUTPUT SCREEN:
+SUCCESS => {
+"ping": "pong"
 }
 
 EX:7......
-sudo apt update 
-PART 1: Ad-hoc Commands 
-ansible all -m ping 
-ansible all -m command -a "uptime" 
-ansible all -m command -a "df -h" 
-ansible all -m dnf -a "name=git state=present use_backend=dnf5" --become --ask-become-pass 
-ansible all -m dnf -a "name=httpd state=present use_backend=dnf5" --become --ask-become-pass 
-ansible all -m service -a "name=httpd state=started" --become --ask-become-pass 
-PART 2: Playbook 
-Create Playbook File 
-nano start_httpd.yml 
-Playbook Code 
-
+sudo dnf update -y
+PART 1: Ad-hoc Commands
+ansible all -m ping
+ansible all -m command -a "uptime"
+ansible all -m command -a "df -h"
+ansible all -m dnf -a "name=git state=present" --become --ask-become-pass
+ansible all -m dnf -a "name=httpd state=present" --become --ask-become-pass
+ansible all -m service -a "name=httpd state=started" --become --ask-become-pass
+PART 2: Playbook
+Create Playbook File
+nano start_httpd.yml
+Playbook Code
 ---
 - name: Start Apache Service
   hosts: local
@@ -96,20 +96,22 @@ Playbook Code
         name: httpd
         state: started
 
-Run Playbook 
-ansible-playbook start_httpd.yml --ask-become-pass 
-Verify Apache 
-systemctl status httpd 
-Optional – Stop Apache 
+Run Playbook
+ansible-playbook start_httpd.yml --ask-become-pass
+
+Verify Apache
+systemctl status httpd
+
+Optional – Stop Apache
 ansible all -m service -a "name=httpd state=stopped" --become --ask-become-pass
-
-
 
 ⭐ ⭐ EX-8 — Jenkins Installation
 ✅ Step-1 Terminal
-sudo apt update
-sudo apt install openjdk-17-jdk -y
-sudo apt install jenkins -y
+sudo dnf update -y
+sudo dnf install java-17-openjdk-devel -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo dnf install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
@@ -127,9 +129,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Install suggested plugins
 Create admin user
 
-👉 Output → Jenkins dashboard
+👉 Output → Jenkins dashboard 
 
-⭐ ⭐ EX-9 — Git Freestyle Job
+⭐ ⭐ EX-9 — Git Freestyle Job in jenkins
+
 ✅ Step-1 Create GitHub Repo
 
 Create repo → jenkins-lab
@@ -165,7 +168,7 @@ Freestyle jobs run shell commands to perform build tasks.
 
 ⭐ ⭐ EX-10 — Maven CI Build
 ✅ Step-1 Terminal
-sudo apt install maven -y
+sudo dnf install maven -y
 mvn -version
 ✅ Step-2 GitHub (NEEDS CODE ⭐)
 
@@ -187,10 +190,9 @@ Create repo → maven-lab
 
 </project>
 
-📄 Java file
+📄 Java file in github
 
 Path:
-
 src/main/java/index.java
 
 Code:
@@ -253,3 +255,6 @@ Build Now
 
 Stage View
 BUILD SUCCESS
+
+Changes made:
+
